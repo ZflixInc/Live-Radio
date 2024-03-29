@@ -1,0 +1,79 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.splash-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.main-content.hidden {
+    display: none;
+}
+
+.main-content {
+    position: relative; /* Needed for correct positioning of children */
+    height: 100%;
+}
+
+iframe {
+    width: 100%;
+    height: 100%; /* Take up full container height */
+    border: none;
+}
+
+.bottom-menu {
+    position: absolute; /* Changed to absolute within the .main-content */
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: #fff;
+    padding: 10px 0;
+}
+
+.menu-icon {
+    text-decoration: none;
+    color: white;
+}
+
+.logo {
+    width: 120px; /* Adjust based on your logo size */
+    height: auto;
+}
+
+.bottom-menu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: #fff;
+    padding: 10px 0;
+}
+
+.menu-icon {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-icon i {
+    margin-bottom: 5px;
+}
+
+iframe {
+    width: 100%;
+    height: calc(100% - 70px); /* Increase this value if your bottom menu is taller */
+    border: none;
+}
