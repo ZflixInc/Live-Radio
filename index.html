@@ -1,858 +1,498 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta name="author" content=" jordan">
-<title>S</title>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<style>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<!-- STYLES -->
+<link rel="stylesheet" href="./style.css"/>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
-
-:root {
- --primary:#f33449;
- --white:#fff;
- --grey:#555;
+*,
+*::after,
+*::before {
+  margin: 0;
+  box-sizing: border-box;
 }
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+
 body {
-font-family: 'Open Sans', sans-serif;
-font-size:1rem;
-background:#000;
-}
-body.dark {
- --white:#000;
- --grey:#fff;
-}
-a,a:hover {
-text-decoration:none;
-}
-img{
- max-width:100%;
-}
-p{
- color:var(--grey);
-}
-.sec {
- background:var(--white);
- width:100%;
- min-height:100vh;
- max-width:460px;
- margin:auto;
- animation:fadeIn 0.5s ease;
-}
-@keyframes fadeIn{
- 0%{
-  opacity:0;
- }
- 100%{
- opacity:1;
- }
-}
-button{
- display:inline-block;
- outline:none;
- border:none;
- background:transparent;
-}
-.sec-1 {
- padding:20px;
- display:flex;
- justify-content: center;
- text-align: center;
- min-height:100vh;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #0a0514;
 }
 
-.sec-1 svg {
- width:90%;
- height:20%;
-}
-.sec-1 h1 {
-  font-size:2.5rem;
-}
-.sec-1 h1 > span {
- color: deeppink;
-}
-.sec-1 p {
- margin:10px 0 25px;
- color:#666;
- font-size:14px;
-}
-.sec-1 button {
- padding:12px 25px;
- background: deeppink;
- color:#fff;
- border-radius:25px;
-}
-.hide {
- display:none;
-}
-.header {
- margin:0 10px;
- padding:8px 10px;
- display:flex;
- justify-content:space-between;
- border-bottom:2px solid #ccc;
- color:var(--grey);
-}
-.header button {
- color:var(--white);
- padding:6px 10px;
- font-size:14px;
- cursor:pointer;
- background:#111;
- border-radius:30px;
-}
-.header button:hover {
- opacity:0.7;
-}
-body.dark .header button {
- background:#fff;
-}
-.music-list {
- padding-bottom:70px;
-}
-.music {
- padding:10px 10px;
- display:flex;
- align-items: center;
- width:100%;
- border-bottom:1px solid #dedede;
- cursor:pointer;
- color:var(--grey);
-}
-.music.active {
- color:var(--primary);
-}
-.list-thumbnail {
- height:60px;
- width:60px;
- border-radius:4px;
- overflow:hidden;
-}
-.list-content {
- flex:1;
- padding:0 15px;
-}
-.list-btn {
- width:50px;
- height:50px;
-}
-.list-btn > i {
- font-size:40px;
- color:var(--grey);
-}
-.music.active .list-btn > i {
- display:none;
-}
-.music .equalize {
- display:none;
-}
-.music.active .equalize {
- display:block;
-}
-.music-list .equalize span {
- display:inline-block;
- height:18px;
- width:3px;
- margin:1px;
- background:var(--primary);
- animation:equalize 1s linear infinite;
- transform-origin: bottom;
-}
- .equalize.pause span {
-  animation-play-state:paused!important;
-}
-.equalize span:nth-child(2) {
- animation-delay:.3s;
-} 
-.equalize span:nth-child(3) {
- animation-delay:.6s;
-} 
-@keyframes equalize {
- 0%, 100%{
-  transform:scaleY(1);
- }
- 50%{
-  transform:scaleY(0.3);
- }
+section {
+  max-width: 576px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.players {
- position:fixed;
- width:100%;
- max-width:460px;
- left:0;
- bottom:0;
- z-index:5;
- background:var(--white);
- color:#555;
- transition:300ms;
-}
-.players.active {
- height:100vh;
- top:0;
- text-align:center;
- padding:0 20px;
- overflow-y:scroll;
- animation:fadeIn 0.5s ease;
- animation-fill-mode:both;
-}
-.bottom {
- display:flex;
- align-items: center;
- height:70px;
- padding:5px 10px;
- border-top:1px solid #ccc;
-}
-.players.active .bottom {
- display:block;
- border-top:none;
- height:auto;
- padding:0;
- margin-bottom:25px;
-}
-.thumbnail {
- height:60px;
- width:60px;
- overflow:hidden;
- border-radius:4px;
-}
-.players.active .thumbnail{
- width:220px;
- margin:40px auto;
- height:220px;
- border-radius:50%;
- background:#000;
- box-shadow:0 4px 10px rgba(0,0,0,0.2);
+header {
+  text-align: center;
+  margin: 2rem 0 0 0;
 }
 
-.players.active .thumbnail.spin {
- box-shadow: none;
- animation:spin 4s linear infinite;
-}
-.players.active .thumbnail.spin:hover {
- animation-play-state:paused;
- transition:200ms;
-}
-.players.active .thumbnail.spin.pause{
- animation-play-state:paused;
-}
-@keyframes spin {
- to{
- transform:rotate(360deg); 
- }
-}
-.thumbnail img {
- object-fit:cover;
+header img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
 
-.content {
- flex:1;
- padding:0 15px;
- color:var(--grey);
-}
-.btn-group .material-icons {
- font-size:40px;
-}
-.btn-group button {
- color:var(--primary);
- cursor:pointer;
- height:60px;
- width:60px;
- border-radius:50%;
- cursor:pointer;
-}
-.playBtn {
- z-index:6;
+header h3 {
+  color: #fff;
+  margin: 15px 0 3px 0;
 }
 
-.back-btn {
- position:absolute;
- top:10px;
- left:10px;
- height:40px;
- width:40px;
- cursor:pointer;
- border-radius:20px;
-}
-.dark-mode-btn {
-position:absolute;
- top:10px;
- right:10px;
- height:40px;
- width:40px;
- cursor:pointer;
- border-radius:20px;
+header p {
+  color: crimson;
 }
 
-.back-btn:hover {
- background:rgba(255,0,0,0.2);
-}
-.back-btn .material-icons {
-  font-size:40px;
-}
-body.dark .players .material-icons {
- color:#fff;
-}
-body.dark .players .material-icons.active  {
- color:var(--primary);
-}
-.prevBtn, .nextBtn, .tools , .progress-box, .back-btn, .dark-mode-btn {
- display:none;
-}
-.players.active .nextBtn,
-.players.active .prevBtn,
-.players.active .back-btn,
-.players.active .dark-mode-btn {
- display:inline-block;
-}
-.players.active .progress-box,
-.players.active .tools {
- display:flex;
-}
-.tools {
- width:100%;
- margin:30px 0;
- justify-content: space-evenly;
-}
-.tools .material-icons {
- font-size:30px;
- color:#555;
- cursor:pointer;
-}
-.tools .material-icons.active {
- color:var(--primary);
-}
-.players.active .playBtn {
- margin:0 25px;
- background:rgba(255,0,0,0.2);
- transition:0.3s;
-}
-.players.active .playBtn:hover {
- background:var(--primary);
- color:#fff;
-}
-.players.active .content h3{
- font-size:24px;
- color:var(--primary);
-}
-.progress-box {
- position:relative;
- margin-bottom:30px;
- display:none;
- width:100%;
- justify-content:space-between;
- font-size:14px;
-}
-.players.active .progress-box {
- display:flex;
-}
-.progress-bar {
-    -webkit-appearance: none;
-    appearance: none;
-    position: absolute;
-    z-index: 4;
-    height: 5px;
-    background: #ccc;
-    width: 100%;
-    border-radius: 30px;
-    top:-10px;
-}
-.progress-bar::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 15px;
-    width: 15px;
-    border: 0;
-    background: var(--primary);
-    border-radius:50%;
-    cursor: pointer;
-} 
-  
-.volume-box {
- display:none;
-}
-.players.active .volume-box {
- transform:translateY(15px);
- display: none;
-}
-.players.active .volume-box.show {
- display: block;
+label {
+  color: #fff;
+  border-bottom: 4px solid crimson;
+  margin-left: 2rem;
+  width: fit-content;
+  padding: 0 0.5rem;
+  margin-top: 3rem;
+  display: block;
 }
 
-.volume-box .progress-bar {
- position:relative;
- width:60%;
+ul {
+  background-color: #0C0222FE;
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 0.5rem 0 0.5rem;
 }
-.volume-box > span {
- display:inline-block;
- height:30px;
- width:30px;
- margin:0 5px;
- cursor:pointer;
- transition:200ms;
+
+ul li {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #a8a8a8;
+  margin-bottom: 15px;
+  padding-bottom: 0.5rem;
 }
-.volume-box > span:hover {
- color:var(--primary);
+
+.track-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
 }
-#audio {
- display:none;
+
+.track-number {
+  color: #a8a8a8;
+  margin-right: 10px;
+}
+
+.track-detail_name {
+  color: #fff;
+}
+
+.track-detail_desc {
+  color: #a8a8a8;
+}
+
+footer {
+  background-color: #030303;
+  padding: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.slider {
+  background-color: darken(white, 50%);
+  border-radius: 2px;
+  cursor: pointer;
+  height: 2px;
+  position: relative;
+  width: 100%;
+}
+
+.slider-progress {
+  background-color: crimson;
+  height: 100%;
+  pointer-events: none;
+  position: absolute;
+  width: 0%;
+}
+.slider-pin {
+  background-color: white;
+  border-radius: 8px;
+  height: 8px;
+  position: absolute;
+  pointer-events: all;
+  right: -5px;
+  top: -2px;
+  width: 8px;
+  box-shadow: (0px 1px 1px 0px rgba(0, 0, 0, 0.32));
+  transition: (transform 0.25s ease);
+}
+
+.count {
+  color: #585858;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin: 3px 0 1rem 0;
+  font-weight: bold;
+}
+
+.event {
+  color:#eee;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 </style>
+<title>Music Player</title>
 </head>
 <body>
-<section class="sec sec-1" id="sec-1">
-  <div>
-   <svg id="Capa_1" enable-background="new 0 0 512 512" height="350" viewBox="0 0 512 512" width="300" xmlns=""><g><g></g></svg>
-
-
-<div>
-
-
-
-<style> h2{ color: #000; font-family: Arial, Helvetica, sans-serif; border-radius: 5px; margin:1px; } 
-
-div .jordan{ margin:2px; border-radius: 20px; 
-
-display:adsolute;
-position:responsive; 
-
-
-
-{
-</style>
-
-
-
- <center>
- 
-
-<div class="jordan" >   <img class=jordan src="https://i.postimg.cc/6q1qkznn/20240426-012833.png" width="40%" height="auto"
-max-width:520px;></a>
-
-</center>
-  
-
-
-<h1>ZfiX <span>Radio</span></h1>
-<p>Ugandan Radio Stations</p>
-<button onclick="showMusicList()">START</button>
-  </div>
-  
-  
-  
-</section>
-<section class="sec sec-2 hide" id="sec-2">
-
-<header class="header">
-
- <h3>Radios</h3>
+<section>
+<!-- CURRENT PLAYING HEADER -->
+<header>
+<img src="https://cdn.britannica.com/03/151903-131-E310E9EC/Microphone-background-sound-waves-energy-Music.jpg" alt="playing-cover"/>
+<h3>Track Name</h3>
+<p>Track desc</p>
 </header>
-
- <div class="music-list" id="music-list">
- </div>
- <audio src="" id="audio" ></audio>
- <div class="players" id="players">
-   <button class="back-btn" onclick="showplayer()"><i class="material-icons" >expand_more</i></button>
-   <button class="dark-mode-btn" onclick="darkMood()"><i class="material-icons" >invert_colors</i></button>
-   
-   <div class="bottom" >
-     <div class="thumbnail" >
-         <img id="thumbnail" src="https://i.postimg.cc/LXSthFwr/20220427-124318.png" alt="" >
-     </div>
-     <div class="content" onclick="showplayer()">
-       <h3 id="name">Name</h3>
-       <small id="category">Category</small>
-     </div>
-     
-     <div class="volume-box">
-     <span onclick="volumeDown()"><i class="material-icons">remove</i></span>
-     
-     <input type="range" class="progress-bar" id="volumeBar" step="1" value="80" min="0" max="100"
-      oninput="audio.volume = this.value/100">
-      
-     <span onclick="volumeUp()"><i class="material-icons">add</i></span>
-     </div>
-     
-     <div class="tools" >
-       <button class="equaliser" onclick="equalizerBtn(event)">
-       <i class="material-icons">equalizer</i>
-       </button>
-       <button class="repeat" onclick="repeat(event)">
-         <i class="material-icons">podcasts</i>
-       </button>
-
-    
-     </div>
-     <div class="progress-box" >
-       <input type="range" class="progress-bar" id="progress" min="0" max="" value="0" onchange="changeProgressBar()"/>
-         <div id="ctview" >00:00</div>
-         <div id="ttview">00:00</div>
-     </div>
-     <div class="btn-group" >
-       <button class="prevBtn" onclick="prevPlay()">
-         <i class="material-icons">skip_previous</i>
-       </button>
-       <button class="playBtn"  onclick="playPause(event)">
-        <i id="playBtn" class="material-icons">play_arrow</i>
-       </button>
-       <button class="nextBtn" onclick="nextPlay()">
-         <i class="material-icons">skip_next</i>
-       </button>
-     </div>
-   </div>
- </div>
+<!-- PLAYLIST LABEL-->
+<label>Radiolist</label>
+<!-- TRACK LIST -->
+<ul></ul>
+<!-- MUSIC CONTROLS -->
+<footer>
+<!-- SLIDER -->
+<div class="slider">
+<div class="slider-progress">
+<div class="slider-pin"></div>
+</div></div>
+<!-- COUNT -->
+<div class="count">
+<span class="count-current">00:01</span>
+<span class="count-final">11:23</span>
+</div>
+<!-- EVENTS -->
+<div class="event">
+<i class="fas fa-caret-left event-prev"></i>
+<i class="fas fa-play event-playPause"></i>
+<i class="fas fa-caret-right event-next"></i>
+<i class="fas fa-volume-up event-muteUnmute"></i>
+</div>
+</footer>
 </section>
+<audio src="" id="audio"></audio>
+<!-- JS -->
+<script src="./script.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+  const tracksList = [
+    {
+      audioSrc:
+        'http://162.244.80.52:8732/;stream.mp3?DIST=TuneIn&TGT=TuneIn&maxServers=2&gdpr=0&us_privacy=1YNY&partnertok=eyJhbGciOiJIUzI1NiIsImtpZCI6InR1bmVpbiIsInR5cCI6IkpXVCJ9.eyJ0cnVzdGVkX3BhcnRuZXIiOnRydWUsImlhdCI6MTYzNTg5MzYzMywiaXNzIjoidGlzcnYifQ.MOdxNOF638bWA3-fPsih2J02gJGmOAADKr7Sax_mRt0',
+      coverSrc: 'https://i.postimg.cc/5tZZRzXy/unnamed.png',
+      name: 'Akabozi FM',
+      desc: 'Akabozi - 97.9FM',
+      id: 1,
+    },
+    {
+      audioSrc:
+        'https://s5.voscast.com:9909/EYOBUJJAJJA',
+      coverSrc: 'https://i.postimg.cc/kg536qrJ/dbkgn4qhz7-1.png',
+      name: 'CBS FM',
+      desc: '88.8FM',
+      id: 2,
+    },
+    {
+      audioSrc: 'https://www.radiosimba.ug:8000/stream',
+      coverSrc: 'https://i.postimg.cc/qMwHvg5D/52qba9zer0-1.png',
+      name: 'Simba FM',
+      desc: '87.3FM',
+      id: 3,
+    },
+    {
+      audioSrc: "https://edge.mixlr.com/channel/xbxnh",
+      coverSrc: 'https://cdn-radiotime-logos.tunein.com/s230438g.png',
+      name: 'Bukedde FM',
+      desc: "100.5",
+      id: 4,
+    },
+    {
+      audioSrc: 'https://streamingv2.shoutcast.com/galaxy-fm-1002',
+      coverSrc: 'https://play-lh.googleusercontent.com/kNR0yn7r7VyNH2qQKnS7L14lghE6M_81w4TP--Q3t_4xWHHN5TuRjPznF31r9JgLDrQ',
+      name: 'Galaxy FM',
+      desc: '100.2',
+      id: 5,
+    },
+    {
+      audioSrc:
+        'https://s5.voscast.com:9905/EMMANDUSO',
+      coverSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ_5rAxac5OwYT3ifIcgT71la_xiAa8t15NkQntNTHjg&s',
+      name: 'CBS FM',
+      desc: '89.2',
+      id: 6,
+    },
+    {
+      audioSrc:
+        'https://turadio.accesopanel.com/8024/stream',
+      coverSrc: 'https://cdn-profiles.tunein.com/s255517/images/logog.jpg?t=162308',
+      name: 'Beat FM',
+      desc: '96.3',
+      id: 7,
+    },
+    {
+      audioSrc:
+        'https://streams.radio.co/see104bedb/listen',
+      coverSrc: 'https://static.tuneyou.com/images/logos/500_500/4/15904/NXTRadio106.1FM_6.jpg',
+      name: 'NXT Radio',
+      desc: '106.1',
+      id: 8,
+    },
+    {
+      audioSrc:
+        'https://turadio.accesopanel.com/8024/stream',
+      coverSrc: 'https://cdn-profiles.tunein.com/s255518/images/logog.jpg?t=162308',
+      name: 'Capital FM',
+      desc: '91.3',
+      id: 9,
+    },
+    {
+      audioSrc:
+        'https://www.hot100.ug/stream',
+      coverSrc: 'https://pbs.twimg.com/profile_images/1117429039554285569/29rufrhd_400x400.jpg',
+      name: 'Hot 100',
+      desc: '100.9',
+      id: 10,
+    },
+    {
+      audioSrc:
+        'http://radio.visiongroup.co.ug:8000/xfm',
+      coverSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYbzxppPk5wAXE0RGb-LdfNMQg0Gi28cKPzS3jZ75Djw&s',
+      name: 'X FM',
+      desc: '94.8',
+      id: 11,
+    },
+    {
+      audioSrc:
+        'https://secure1.reliastream.com/977recordfm/;',
+      coverSrc: 'https://br.radio.net/images/broadcasts/bd/e1/127600/1/c300.png',
+      name: 'Record FM',
+      desc: '97.7',
+      id: 12,
+    },
+    {
+      audioSrc:
+        'https://s48.myradiostream.com/:12784/;',
+      coverSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIfVEz2ioc9mYW5Z6Fd51H_kx_Ec-3uGcWDuJSzgc68Q&s',
+      name: 'Mega FM',
+      desc: '102',
+      id: 13,
+    },
+    {
+      audioSrc:
+        'http://162.244.80.106:10853/;stream.mp3',
+      coverSrc: 'https://static-media.streema.com/media/cache/0d/e3/0de365d7d9b89fd9d7031d16b37b54dd.jpg',
+      name: 'Radio City',
+      desc: '97.0',
+      id: 14,
+    },
+    {
+      audioSrc:
+        'https://cp7.serverse.com/proxy/rockfm/stream',
+      coverSrc: 'https://static.tuneyou.com/images/logos/500_500/43/16643/RockFMUG_5.jpg',
+      name: 'Rock FM',
+      desc: '95.2',
+      id: 15,
+    },
+    {
+      audioSrc:
+        'https://radio.thehostcity.net/8036/;',
+      coverSrc: 'https://i.postimg.cc/CKccQRpD/image.webp',
+      name: 'Radio Yoo',
+      desc: 'Online',
+      id: 16,
+    },
+    {
+      audioSrc:
+        'http://162.244.80.52:8740/;',
+      coverSrc: 'https://radioonefm90.com/logo4.gif',
+      name: 'Radio 1 FM',
+      desc: '90.0',
+      id: 17,
+    },
+    {
+      audioSrc:
+        'http://node-10.zeno.fm/1772yz5yc5zuv.aac?rj-ttl=5&rj-tok=AAABfOQB83wAIzBK9Omr2Wvs8g',
+      coverSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLJ1JuuhWRrqhigL3SmZfC59067NUMwRC3vhURWjTTng&s',
+      name: 'Uptodown FM',
+      desc: '98.5',
+      id: 18,
+    },
+    {
+      audioSrc:
+        'http://s13.myradiostream.com:40212/;stream.nsv',
+      coverSrc: 'https://voiceofafricafmuganda.com/wp-content/uploads/2022/07/Voice-of-Africa-FM-Radio-Logo.png',
+      name: 'Voice Of Africa',
+      desc: '94.7',
+      id: 19,
+    },
+    {
+      audioSrc:
+        'https://stream-151.zeno.fm/toprecv2ppevv?zs=hqQkK9lbQa-sZvefkCgf5g',
+      coverSrc: 'https://i.postimg.cc/NMjhwVvn/52823468-340825249861191-6783092651445977088-n.jpg',
+      name: 'zflix FM',
+      desc: 'Hot Music',
+      id: 20,
+    },
+  ];
 
-<script>
+  const currentTrackName = document.querySelector('header h3');
+  const currentTrackDesc = document.querySelector('header p');
+  const currentTrackCover = document.querySelector('header img');
+  const currentTrackAudio = document.querySelector('audio');
+  const playPauseBtn = document.querySelector('.event-playPause');
+  const muteUnmuteBtn = document.querySelector('.event-muteUnmute');
+  const playNextBtn = document.querySelector('.event-next');
+  const playPrevBtn = document.querySelector('.event-prev');
+  const progress = document.querySelector('.slider-progress');
+  const currentTrackTime = document.querySelector('.count-current');
+  const finalTrackTime = document.querySelector('.count-final');
+  // ADD TRACKS TO MY PLAYLIST ON PAGE LOAD
+  (function addMyTracksList() {
+    for (let track of tracksList) {
+      var li = document.createElement('li');
+      li.id = track.id;
+      li.innerHTML = `
+                    <div class="track-number">0${track.id}</div>
+                    <img
+                    src=${track.coverSrc}
+                    class="track-img"
+                    alt=""
+                    />
 
- const playerWindow = document.getElementById("players");
- const audio = document.getElementById("audio");
- const name = document.getElementById("name");
- const category = document.getElementById("category");
- const thumbnail = document.getElementById("thumbnail");
- const playBtn = document.getElementById("playBtn");
- const progress = document.getElementById("progress");
- const ttview = document.getElementById("ttview");
- const tcview = document.getElementById("tcview");
- const volumeBar = document.getElementById("volumeBar");
- 
- const musicList = document.getElementById("music-list");
- const body = document.querySelector("body");
- 
- let musicData = [
- {
- id:1,
- category:"87.9",
- name:" Akabozi FM",
- src:"http://162.244.80.52:8732/;stream.mp3?DIST=TuneIn&TGT=TuneIn&maxServers=2&gdpr=0&us_privacy=1YNY&partnertok=eyJhbGciOiJIUzI1NiIsImtpZCI6InR1bmVpbiIsInR5cCI6IkpXVCJ9.eyJ0cnVzdGVkX3BhcnRuZXIiOnRydWUsImlhdCI6MTYzNTg5MzYzMywiaXNzIjoidGlzcnYifQ.MOdxNOF638bWA3-fPsih2J02gJGmOAADKr7Sax_mRt0",
- image:"https://i.postimg.cc/5tZZRzXy/unnamed.png",
- },
- {
- id:2,
- category:"88.8",
- name:"CBS Radio",
- src:"https://s5.voscast.com:9909/EYOBUJJAJJA",
- image:"https://i.postimg.cc/kg536qrJ/dbkgn4qhz7-1.png",
-  },
- {
- id:3,
- category:"97.3",
- name:"Simba FM",
- src:"https://www.radiosimba.ug:8000/stream",
- image:"https://i.postimg.cc/qMwHvg5D/52qba9zer0-1.png",
-  },
- {
- id:4,
- category:"100.5",
- name:"Bukedde FM",
- src:"https://edge.mixlr.com/channel/xbxnh",
- image:"https://cdn-radiotime-logos.tunein.com/s230438g.png",
-  },
- {
- id:5,
- category:"100.2",
- name:"Galaxy FM",
- src:"https://streamingv2.shoutcast.com/galaxy-fm-1002",
- image:"https://play-lh.googleusercontent.com/kNR0yn7r7VyNH2qQKnS7L14lghE6M_81w4TP--Q3t_4xWHHN5TuRjPznF31r9JgLDrQ",
-  },
- {
- id:6,
- category:"89.2",
- name:"CBS FM",
- src:"https://s5.voscast.com:9905/EMMANDUSO",
- image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ_5rAxac5OwYT3ifIcgT71la_xiAa8t15NkQntNTHjg&s",
-  },
- {
- id:7,
- category:"96.3",
- name:"Beat FM",
- src:"https://turadio.accesopanel.com/8024/stream",
- image:"https://cdn-profiles.tunein.com/s255517/images/logog.jpg?t=162308",
-  },
- {
- id:8,
- category:"106.1",
- name:"NXT Radio",
- src:"https://streams.radio.co/see104bedb/listen",
- image:"https://static.tuneyou.com/images/logos/500_500/4/15904/NXTRadio106.1FM_6.jpg",
-  },
- {
- id:9,
- category:"91.3",
- name:"Capital FM",
- src:"https://turadio.accesopanel.com/8024/stream",
- image:"https://cdn-profiles.tunein.com/s255518/images/logog.jpg?t=162308",
-  },
- {
- id:10,
- category:"100.9",
- name:"HOT 100",
- src:"https://www.hot100.ug/stream",
- image:"https://pbs.twimg.com/profile_images/1117429039554285569/29rufrhd_400x400.jpg",
-  },
- {
- id:11,
- category:"94.8",
- name:"X FM",
- src:"http://radio.visiongroup.co.ug:8000/xfm",
- image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYbzxppPk5wAXE0RGb-LdfNMQg0Gi28cKPzS3jZ75Djw&s",
-  },
- {
- id:12,
- category:"97.7",
- name:"Record FM",
- src:"https://secure1.reliastream.com/977recordfm/;",
- image:"https://br.radio.net/images/broadcasts/bd/e1/127600/1/c300.png",
-  },
- {
- id:13,
- category:"102",
- name:"Mega FM",
- src:"https://s48.myradiostream.com/:12784/;",
- image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIfVEz2ioc9mYW5Z6Fd51H_kx_Ec-3uGcWDuJSzgc68Q&s",
-  },
- {
- id:14,
- category:"97.0",
- name:"Radio City",
- src:"http://162.244.80.106:10853/;stream.mp3",
- image:"https://static-media.streema.com/media/cache/0d/e3/0de365d7d9b89fd9d7031d16b37b54dd.jpg",
-  },
- {
- id:15,
- category:"95.2",
- name:"Rock FM",
- src:"https://cp7.serverse.com/proxy/rockfm/stream",
- image:"https://static.tuneyou.com/images/logos/500_500/43/16643/RockFMUG_5.jpg",
-  },
- {
- id:16,
- category:"online",
- name:"Radio yoo",
- src:"https://radio.thehostcity.net/8036/;",
- image:"https://i.postimg.cc/CKccQRpD/image.webp",
-  },
- {
- id:17,
- category:"90.0",
- name:"Radio 1 FM",
- src:"http://162.244.80.52:8740/;",
- image:"https://radioonefm90.com/logo4.gif",
-  },
- {
- id:18,
- category:"98.5",
- name:"Uptown FM",
- src:"http://node-10.zeno.fm/1772yz5yc5zuv.aac?rj-ttl=5&rj-tok=AAABfOQB83wAIzBK9Omr2Wvs8g",
- image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLJ1JuuhWRrqhigL3SmZfC59067NUMwRC3vhURWjTTng&s",
- },
- {
- id:19,
- category:"94.7",
- name:"Voice of Africa",
- src:"http://s13.myradiostream.com:40212/;stream.nsv",
- image:"https://voiceofafricafmuganda.com/wp-content/uploads/2022/07/Voice-of-Africa-FM-Radio-Logo.png",
- },
- {
- id:20,
- category:"Music",
- name:"Zawaka FM",
- src:"https://stream-151.zeno.fm/toprecv2ppevv?zs=hqQkK9lbQa-sZvefkCgf5g",
- image:"https://i.postimg.cc/Xq4zpY2w/28284637-ico.png",
- },
- 
- ]
-let repeatMusic = false;
-let index = 1;
-let songs = musicData;
+                    <div class="track-detail">
+                    <div class="track-detail_name">${track.name}</div>
+                    <div class="track-detail_desc">
+                        <small>${track.desc}</small>
+                    </div>
+                    </div>
+        `;
+      document.querySelector('ul').appendChild(li);
+      (function (id) {
+        li.addEventListener(
+          'click',
+          () => {
+            playSelectedTrack(id);
+          },
+          false
+        );
+      })(track.id);
+    }
+  })();
 
-const elc = musicList.getElementsByClassName("equalize")[index-1];
+  let trackId = 1;
 
-const showMusicList = () => {
- document.querySelector(".sec-1").classList.add("hide");
- document.querySelector(".sec-2").classList.remove("hide");
-}
-const darkMood = () => {
- body.classList.toggle("dark");
-}
+  const loadTrack = (songId) => {
+    const song = tracksList.find((track) => track.id === songId);
 
-const setActive = (i) => {
-  setEqualizer()
-  let a =  musicList.querySelector(".active");
-  if(a !== null) {
-   a.classList.remove("active");
-  }
-  const ele = document.getElementsByClassName("music")[i-1];
-  ele.classList.add("active");
-}
+    const { audioSrc, coverSrc, name, desc } = song;
+    currentTrackName.innerText = name;
+    currentTrackDesc.innerText = desc;
+    currentTrackAudio.src = audioSrc;
+    currentTrackCover.src = coverSrc;
+  };
 
-const setData = data => {
- name.textContent = data.name;
- category.textContent = data.category;
- thumbnail.src = data.image;
-} 
+  const playSelectedTrack = (songId) => {
+    trackId = songId;
+    loadTrack(songId);
+    playTrack();
+  };
 
-const playMusic = async (i) => {
-  if(i == 18 || i == 10 ) {
-   body.classList.toggle("dark");
-   setTimeout(() => body.classList.toggle("dark"),7000);
-  }
-  let data = musicData.find(m => m.id === i) || musicData[1];
-  setActive(i)
-  setData(data);
-  playBtn.textContent = "pause";
-  audio.src = data.src;
-  await audio.load();
-  audio.play();
-}
- 
- const playPause = e => {
-    if(audio.paused) {
-    playBtn.textContent = "pause";
-    audio.play();
-    setEqualizer()
-   } else{
-   playBtn.textContent = "play_arrow";
-    audio.pause();
-    setEqualizer(true)
-   }
- }
- 
- const showplayer = () => {
-   playerWindow.classList.toggle("active");
- }
- const equalizerBtn = e => {
-  e.target.classList.toggle("active");
-  document.querySelector(".thumbnail").classList.toggle("spin");
- }
- const addFvt = e => {
-  e.target.classList.toggle("active")
- }
- const repeat = e => {
-  e.target.classList.toggle("active")
-  repeatMusic = !repeatMusic;
-  audio.loop = repeatMusic;
- }
- const volumeBox = e => {
-  e.target.classList.toggle("active");
-  document.querySelector(".volume-box").classList.toggle("show");
- }
- const nextPlay = () => {
-  index++;
-  if (index > musicData.length) {
-   index = 1;
-  }
-  playMusic(index);
- }
- const prevPlay = () => {
-  index--;
-  if (index <= 0) {
-  index = musicData.length;
-  }
-  playMusic(index);
- }
- 
- audio.addEventListener("ended", () => {
-  nextPlay();
- })
- audio.onloadeddata = () =>  {
- progress.max = audio.duration
- const ds = parseInt(audio.duration % 60)
- const dm = parseInt((audio.duration / 60) % 60)
- ttview.textContent = dm + ':' + ds;
- }
- audio.ontimeupdate =  () =>  { 
-   progress.value = audio.currentTime 
- }
- audio.addEventListener('timeupdate', () => {
+  loadTrack(trackId);
 
- var cs = parseInt(audio.currentTime % 60)
- var cm = parseInt((audio.currentTime / 60) % 60)
-  ctview.textContent = cm + ':' + cs;
- }, false);
- 
- const changeProgressBar = () => { 
-   audio.currentTime = progress.value;
- }
- 
+  const playTrack = () => {
+    playPauseBtn.classList.remove('fa-play');
+    playPauseBtn.classList.add('fa-pause');
 
- const addList = (data) => {
-  let div = document.createElement("div");
-  div.classList.add('music');
-  div.setAttribute("data-id", data.id);
-  let html = `
-   <div class="list-thumbnail" >
-    <img src="${data.image}" alt="" >
-   </div>
-   <div class="list-content" >
-   <h3>${data.name}</h3>
-   <small>${data.category}</small>
-   </div>
-   <button class="list-btn" >
-   <i class="material-icons">play_arrow</i>
-    <div class="equalize">
-    <span></span>
-    <span></span>
-    <span></span>
-   </div>
-   </button>`;
-   div.innerHTML = html;
-   musicList.append(div);
-   div.addEventListener('click', () => {
-    playMusic(data.id);
-    playerWindow.classList.add("active");
-    index = data.id;
-   });
- }
- 
- const setMusicList =  () => {
-  songs.forEach(song => addList(song));
- }
- 
- const FirstSetUp = () => {
-  audio.src = musicData[index -1].src;
-  setData(musicData[index -1]);
-  setMusicList();
- }
- FirstSetUp()
- 
- const filterCat = (cat) => {
-  songs = musicData.filter(song => song.category == cat);
-  while(musicList.hasChildNodes()){
-    musicList.removeChild(musicList.firstChild);
-  }
-  setMusicList()
- }
- const filterAll = () => {
-  songs = musicData;
-  while(musicList.hasChildNodes()){
-    musicList.removeChild(musicList.firstChild);
-  }
-  setMusicList()
- }
-function setEqualizer(action = false){
- const elc = musicList.getElementsByClassName("equalize")[index-1];
- const thumb =  document.querySelector(".thumbnail");
- if(elc.classList.contains("pause")) {
-   elc.classList.remove("pause")
- } else {
-  if(action) {
-   elc.classList.add("pause")
-  }
- }
- if(thumb.classList.contains("spin") && audio.paused && action){
-  thumb.classList.add("pause");
- } else if(thumb.classList.contains("spin") &&!audio.paused){
-  thumb.classList.remove("pause");
- }
-}
+    currentTrackAudio.play();
+  };
+
+  const pauseTrack = () => {
+    playPauseBtn.classList.remove('fa-pause');
+    playPauseBtn.classList.add('fa-play');
+
+    currentTrackAudio.pause();
+  };
+
+  const playPrevTrack = () => {
+    trackId--;
+
+    if (trackId < 0) {
+      trackId = tracksList.length - 1;
+    }
+    loadTrack(trackId);
+    playTrack();
+  };
+
+  const playNextTrack = () => {
+    trackId++;
+    if (trackId > tracksList.length - 1) {
+      trackId = 0;
+    }
+    loadTrack(trackId);
+    playTrack();
+  };
+
+  const updateProgress = () => {
+    const currentTime = currentTrackAudio.currentTime;
+    const trackDuration = currentTrackAudio.duration;
+    const percent = (currentTime / trackDuration) * 100;
+    progress.style.width = percent + '%';
+    let curMins = Math.floor(currentTime / 60);
+    let curSecs = Math.floor(currentTime - curMins * 60);
+    let durMins = Math.floor(trackDuration / 60) || '--';
+    let durSecs = Math.floor(trackDuration - durMins * 60) || '--';
+
+    if (curMins < 10) {
+      curMins = `0${curMins}`;
+    }
+    if (curSecs < 10) {
+      curSecs = `0${curSecs}`;
+    }
+    if (durMins < 10) {
+      durMins = `0${durMins}`;
+    }
+    if (durSecs < 10) {
+      durSecs = `0${durSecs}`;
+    }
+
+    currentTrackTime.innerText = `${curMins}:${curSecs}`;
+    finalTrackTime.innerText = `${durMins}:${durSecs}`;
+  };
+
+  const muteUnmuteTrack = () => {
+    if (currentTrackAudio.muted) {
+      currentTrackAudio.muted = false;
+      muteUnmuteBtn.classList.remove('fa-volume-mute');
+      muteUnmuteBtn.classList.add('fa-volume-up');
+    } else {
+      currentTrackAudio.muted = true;
+      muteUnmuteBtn.classList.remove('fa-volume-up');
+      muteUnmuteBtn.classList.add('fa-volume-mute');
+    }
+  };
+
+  playPauseBtn.addEventListener('click', () => {
+    const currentlyPlaying = playPauseBtn.classList.contains('fa-pause');
+
+    currentlyPlaying ? pauseTrack() : playTrack();
+  });
+  muteUnmuteBtn.addEventListener('click', () => muteUnmuteTrack());
+
+  playPrevBtn.addEventListener('click', () => playPrevTrack());
+  playNextBtn.addEventListener('click', () => playNextTrack());
+
+  currentTrackAudio.addEventListener('timeupdate', () => updateProgress());
+});
 </script>
 </body>
-</html>
+ </html>
